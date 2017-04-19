@@ -11,7 +11,7 @@ mount "${DEVICE}" "${MOUNTPOINT}"
 
 mkdir -p "${MOUNTPOINT}/targets"
 
-cp -v -f ./grub.cfg "${MOUNTPOINT}/boot/grub2/grub.cfg"
+cp -v -f ./grub.cfg "${MOUNTPOINT}/boot/grub/grub.cfg"
 
 pushd "${MOUNTPOINT}/targets"
 
@@ -21,7 +21,7 @@ while read url; do
   else
     echo "Skip ${url}: file already exists"
   fi
-done < <(sed -n '/^# SOURCE: / s/# SOURCE: // p' "${MOUNTPOINT}/boot/grub2/grub.cfg")
+done < <(sed -n '/^# SOURCE: / s/# SOURCE: // p' "${MOUNTPOINT}/boot/grub/grub.cfg")
 popd
 
 umount "$DEVICE"
